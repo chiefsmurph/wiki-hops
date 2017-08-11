@@ -6,10 +6,13 @@ const getFirstLink = ($, page) => {
   let firstLink = null;
 
   let allLinks = $('p > a').length ? $('p > a') : $('a');
+  // $('a') = if a wiki page has no article body then go to first redirect link
   allLinks = allLinks.not((i, el) => {
-    return $(el).attr('href').indexOf(page) !== -1;
+    // remove all links that refer to the current page or 'nofollow'
+    return !$(el).attr('href') ||
+        $(el).attr('href').indexOf(page) !== -1 ||
+        $(el).attr('rel') === 'nofollow';
   });
-  // if a wiki page has no article body then go to first redirect link
 
   let linkNum = 0;
   while (!firstLink) {

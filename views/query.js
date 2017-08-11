@@ -1,4 +1,5 @@
 import { h } from 'hyperapp';
+import Context from '../components/context';
 
 const query = module.exports = (state, actions) => {
 
@@ -21,7 +22,7 @@ const query = module.exports = (state, actions) => {
                 {hop.title}
               </div>
               <div class="column">
-                {hop.context}
+                <Context firstLink={hop.firstLink}/>
               </div>
             </div>
           ))}

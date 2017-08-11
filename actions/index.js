@@ -25,11 +25,7 @@ const actions = module.exports = {
       .then(data => {
 
         console.log('fetched ', data);
-        actions.addHop({
-          title: data.title,
-          context: state.lastContext
-        });
-        actions.setLastContext(data.firstLink.context);
+        actions.addHop(data);
 
         if (data.title === 'Philosophy') {
           console.log('reached philosophy')
@@ -38,7 +34,7 @@ const actions = module.exports = {
           console.log('first link page: ', firstLinkPage);
           if (state.hops.indexOf(firstLinkPage) === -1) {
             // if not a loop
-            setTimeout(() => actions.requestPage(firstLinkPage), 1000);
+            setTimeout(() => actions.requestPage(firstLinkPage), 500);
           } else {
             console.log('found a loop');
           }

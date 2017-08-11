@@ -1,8 +1,9 @@
-import { h, app, Router } from "hyperapp"
-import actions from './actions/'
-import view from './views'
+import { h, app, Router } from 'hyperapp';
+import actions from './actions/';
+import view from './views';
 
 // mixins
+import './stylesheets/main.scss';
 
 app({
   state: {

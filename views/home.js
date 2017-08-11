@@ -12,14 +12,26 @@ const home = module.exports = (state, actions) => {
 
   return (
     <div>
+      <section class="hero is-primary">
+        <div class="hero-body">
+          <h2 class="title">Hi there, type in a wikipedia URL and I will tell you how many hops it takes to get from that article to Wikipedias "philosophy" article by clicking on the first link in the article body.</h2>
+          <h3 class="subtitle">97% of articles make it back there.</h3>
+        </div>
+      </section>
 
-      <h2>Hi there, type in a wikipedia URL and I will tell you how many hops it takes to get from that article to Wikipedias "philosophy" article by clicking on the first link in the article body.  97% of articles make it back there.</h2>
-      <br />
-      <input
-        type="text"
-        id="wikiURL"
-        onkeydown={e => { if (e.keyCode === 13) queryURL(); }}/>
-      <button onclick={queryURL}>Submit</button>
+      <div class="columns is-vcentered" id="queryControls">
+        <input
+          class="input column is-three-quarters"
+          type="text"
+          id="wikiURL"
+          onkeydown={e => { if (e.keyCode === 13) queryURL(); }}/>
+        <a
+          id="submitBtn"
+          class="button column"
+          onclick={queryURL}>
+            Submit
+        </a>
+      </div>
 
     </div>
   );

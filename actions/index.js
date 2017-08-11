@@ -1,4 +1,4 @@
-import { fetchWiki } from './getPage';
+import { fetchWiki, urlToPage } from './getPage';
 
 const actions = module.exports = {
   init: () => {
@@ -13,7 +13,6 @@ const actions = module.exports = {
     actions.setActiveQuery(page);
     actions.clearHops();
     actions.requestPage(page);
-
   },
   requestPage: (state, actions, page) => {
 
@@ -21,14 +20,19 @@ const actions = module.exports = {
       .then(data => {
 
         console.log('fetched ', data);
-        actions.addHop(data.title);
+        actions.addHop({
+          title: data.title,
+          context: state.lastContext
+        });
+        actions.setLastContext(data.firstLink.context);
+
         if (data.title === 'Philosophy') {
           console.log('reached philosophy')
         } else {
-          let firstLinkPage = data.firstLink.url.split('/').pop()
-          firstLinkPage = firstLinkPage.split('#')[0];
+          const firstLinkPage = urlToPage(data.firstLink.url);
           console.log('first link page: ', firstLinkPage);
           if (state.hops.indexOf(firstLinkPage) === -1) {
+            // if not a loop
             setTimeout(() => actions.requestPage(firstLinkPage), 1000);
           } else {
             console.log('found a loop');
@@ -42,5 +46,5 @@ const actions = module.exports = {
     console.log('setting active query', page);
     return { activeQuery: page };
   },
-
+  setLastContext: (state, actions, context) => ({ lastContext: context })
 };

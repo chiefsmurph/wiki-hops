@@ -12,7 +12,7 @@ const query = module.exports = (state, actions) => {
       <ul>
         {state.hops.map((hop, i) => (
           <li key={i}>
-            {hop}
+            {JSON.stringify(hop)}
           </li>
         ))}
       </ul>

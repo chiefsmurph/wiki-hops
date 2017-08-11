@@ -6,7 +6,7 @@
   "scripts": {
     "build": "$(npm bin)/webpack -p",
     "watch": "$(npm bin)/webpack -p -w",
-    "serve": "http-server ./dist"
+    "serve": "http-server ./dist -c-1"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,12 @@
     "babel-preset-stage-2": "^6.24.1"
   },
   "dependencies": {
+    "bulma": "^0.5.1",
     "cheerio": "^1.0.0-rc.2",
-    "hyperapp": "^0.9.3"
+    "css-loader": "^0.28.4",
+    "hyperapp": "^0.9.3",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2"
   }
 }

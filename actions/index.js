@@ -1,17 +1,22 @@
-import { fetchWiki, urlToPage } from './getPage';
+import urlToPage from '../api/helpers/urlToPage';
+import fetchWiki from '../api/fetchWiki';
 
 const actions = module.exports = {
   init: () => {
     alert('initting');
   },
-  clearHops: (state, actions) => ({ hops: [] }),
+  newQuery: (state, actions, page) => ({
+    hops: [],
+    lastContext: null,
+    activeHop: true,
+    activeQuery: page
+  }),
   addHop: (state, actions, hop) => ({
     hops: state.hops.concat([hop])
   }),
   beginHop: (state, actions, page) => {
     console.log('beginning hops for ', page);
-    actions.setActiveQuery(page);
-    actions.clearHops();
+    actions.newQuery(page);
     actions.requestPage(page);
   },
   requestPage: (state, actions, page) => {
@@ -41,10 +46,6 @@ const actions = module.exports = {
 
       });
 
-  },
-  setActiveQuery: (state, actions, page) => {
-    console.log('setting active query', page);
-    return { activeQuery: page };
   },
   setLastContext: (state, actions, context) => ({ lastContext: context })
 };

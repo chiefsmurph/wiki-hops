@@ -1,12 +1,12 @@
 import { h } from 'hyperapp';
+import urlToPage from '../api/helpers/urlToPage';
 
 const home = module.exports = (state, actions) => {
 
   const queryURL = () => {
     console.log('queryi click')
     const url = document.getElementById("wikiURL").value;
-    const page = url.split('/').pop();
-    actions.beginHop(page);
+    const page = urlToPage(url);
     actions.router.go(`/query/${encodeURIComponent(page)}`);
   };
 
@@ -21,13 +21,14 @@ const home = module.exports = (state, actions) => {
 
       <div class="columns is-vcentered" id="queryControls">
         <input
-          class="input column is-three-quarters"
+          class="input is-large column is-three-quarters"
           type="text"
           id="wikiURL"
+          placeholder="URL or page"
           onkeydown={e => { if (e.keyCode === 13) queryURL(); }}/>
         <a
           id="submitBtn"
-          class="button column"
+          class="button column is-large is-primary"
           onclick={queryURL}>
             Submit
         </a>

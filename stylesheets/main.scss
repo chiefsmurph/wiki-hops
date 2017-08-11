@@ -5,6 +5,10 @@ body {
   #queryControls {
     height: 200px;
     padding: 0 50px;
+
+    & > * {
+      border-radius: 0;
+    }
   }
   #submitBtn {
     padding: 7px;

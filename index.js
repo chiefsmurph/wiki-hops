@@ -20,7 +20,7 @@ app({
       console.log(data);
       const isRoute = route => data.match.indexOf(route) !== -1 && data.params && data.params.query;
       if (isRoute('query')) {
-        actions.setActiveQuery(data.params.query);
+        actions.beginHop(data.params.query);
       }
     }
   },

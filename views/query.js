@@ -5,17 +5,28 @@ const query = module.exports = (state, actions) => {
   return (
     <div>
 
-      <h2>active query: {state.activeQuery}</h2>
+      <section class="hero is-primary">
+        <div class="hero-body">
+          <h1 class="title">active query: {state.activeQuery}</h1>
+        </div>
+      </section>
 
-      <h3>Hops:</h3>
-      {JSON.stringify(state)}
-      <ul>
-        {state.hops.map((hop, i) => (
-          <li key={i}>
-            {JSON.stringify(hop)}
-          </li>
-        ))}
-      </ul>
+      <section class="section">
+        <h2 class="title is-2">Hops:</h2>
+
+        <div class="">
+          {state.hops.map((hop, i) => (
+            <div class="columns">
+              <div class="column is-one-third">
+                {hop.title}
+              </div>
+              <div class="column">
+                {hop.context}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
     </div>
   )

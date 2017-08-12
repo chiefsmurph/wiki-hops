@@ -2,8 +2,9 @@ import { h } from 'hyperapp';
 
 const Context = ({ firstLink }) => {
 
+  const { context, text, url } = firstLink;
+
   const setInnerHTML = (el) => {
-    const { context, text, url } = firstLink;
     const isFirstWordOfContext = context.substring(0, text.length) === text;
     const escapedText = text.replace(/(?=[() ])/g, '\\');
     const regexp = isFirstWordOfContext ? `(${escapedText})` : ` (${escapedText})`;
@@ -12,7 +13,7 @@ const Context = ({ firstLink }) => {
   };
 
   return (
-    <div oncreate={setInnerHTML} class="context" />
+    <div oncreate={setInnerHTML} key={url} class="context" />
   );
 };
 

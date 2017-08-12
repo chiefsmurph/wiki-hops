@@ -14,6 +14,7 @@ const getFirstLink = ($, page) => {
         href.indexOf(page) !== -1 ||
         href.indexOf('index.php') !== -1 ||
         $(el).text().toLowerCase() === page ||
+        $(el).closest('table').length !== 0 ||  // no links from the sidebar or any table
         href[0] === '#' ||
         $(el).attr('rel') === 'nofollow';
   });

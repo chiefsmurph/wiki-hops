@@ -41,6 +41,20 @@ body {
 
 #hopViewer .row.footer {
   flex: 0 1 40px;
+  text-align: center;
+  padding: 0;
+
+  & > a {
+    color: blue;
+    display: inline-block;
+    padding: 15px;
+    text-decoration: underline;
+    width: 100%;
+
+    &:hover {
+      background-color: lightyellow;
+    }
+  }
 }
 
 
@@ -52,7 +66,6 @@ body {
   }
 
   #queryControls {
-    height: 200px;
     padding: 0 50px;
 
     & > * {
@@ -64,8 +77,13 @@ body {
   }
   .context {
     font-style: italic;
+    display: inline-block;
   }
   .box {
     margin: 20px;
+  }
+  .is-danger {
+    color: $danger;
+    font-weight: bold;
   }
 }

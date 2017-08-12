@@ -19,6 +19,10 @@ const query = module.exports = (state, actions) => {
             currently hopping...<br/>
             total hops = {hopCount}
           </div>
+        ) : state.loopPage ? (
+          <div class="is-danger">
+            Darn, we ran in to a loop at {state.loopPage}
+          </div>
         ) : (
           <div>
             number of steps to reach "Philosophy" from "{state.activeQuery}": {hopCount}
@@ -35,7 +39,7 @@ const query = module.exports = (state, actions) => {
           <div style={{ height: '80%' }}>
             {state.hops.map((hop, i) => (
               <div class="columns">
-                <div class="column is-one-third">
+                <div class={'column is-one-third' + (state.loopPage === hop.title ? ' is-danger' : '')}>
                   {i === 0 ? 'starting at...' : i + '. '}{hop.title}
                 </div>
                 <div class="column">

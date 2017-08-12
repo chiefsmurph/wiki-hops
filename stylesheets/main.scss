@@ -1,6 +1,55 @@
 @import '../node_modules/bulma/bulma.sass';
 
+
+html,
 body {
+  height: 100%;
+  margin: 0
+}
+
+#hopViewer {
+  display: flex;
+  flex-flow: column;
+  height: 80%;
+  margin: 22px;
+}
+
+#hopViewer .row {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+#hopViewer .row.header {
+  flex: 0 1 auto;
+  background-color: black;
+  /* The above is shorthand for:
+  flex-grow: 0,
+  flex-shrink: 1,
+  flex-basis: auto
+  */
+
+  > * {
+    color: white;
+  }
+}
+
+#hopViewer .row.content {
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#hopViewer .row.footer {
+  flex: 0 1 40px;
+}
+
+
+body {
+
+
+  .hero.is-primary * {
+    color: black !important;
+  }
 
   #queryControls {
     height: 200px;
@@ -15,5 +64,8 @@ body {
   }
   .context {
     font-style: italic;
+  }
+  .box {
+    margin: 20px;
   }
 }

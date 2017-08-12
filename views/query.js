@@ -2,9 +2,10 @@ import { h } from 'hyperapp';
 import Context from '../components/context';
 
 const query = module.exports = (state, actions) => {
-
+  let hopCount = state.hops.length - 1;
+  hopCount = hopCount > 0 ? hopCount : '--';
   return (
-    <div>
+    <div style={{ height: '80%'}}>
 
       <section class="hero is-primary">
         <div class="hero-body">
@@ -12,20 +13,40 @@ const query = module.exports = (state, actions) => {
         </div>
       </section>
 
-      <section class="section">
-        <h2 class="title is-2">Hops:</h2>
+      <div class={state.activeHop ? 'box is-loading' : 'box'}>
+        {state.activeHop ? (
+          <div>
+            currently hopping...<br/>
+            total hops = {hopCount}
+          </div>
+        ) : (
+          <div>
+            number of steps to reach "Philosophy" from "{state.activeQuery}": {hopCount}
+          </div>
+        )}
+      </div>
 
-        <div class="">
-          {state.hops.map((hop, i) => (
-            <div class="columns">
-              <div class="column is-one-third">
-                {hop.title}
+      <section id="hopViewer">
+        <div class="row header">
+          <h4 class="title is-4">Hops:</h4>
+        </div>
+
+        <div class="row content" onupdate={actions.scrollToBottom}>
+          <div style={{ height: '80%' }}>
+            {state.hops.map((hop, i) => (
+              <div class="columns">
+                <div class="column is-one-third">
+                  {i === 0 ? 'starting at...' : i + '. '}{hop.title}
+                </div>
+                <div class="column">
+                  <Context firstLink={hop.firstLink}/>
+                </div>
               </div>
-              <div class="column">
-                <Context firstLink={hop.firstLink}/>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+        <div class="row footer">
+          <a onclick={() => actions.router.go('/home')}>click here to go back and scan another wiki URL or page</a>
         </div>
       </section>
 

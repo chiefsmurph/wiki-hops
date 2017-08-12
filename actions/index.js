@@ -6,11 +6,11 @@ const actions = module.exports = {
     alert('initting');
   },
   newQuery: (state, actions, page) => ({
+    // reset query vars
     hops: [],
-    lastContext: null,
     activeHop: true,
     activeQuery: page,
-    // reset home variables
+    // reset home vars
     searchVal: null,
     foundQueryPage: null,
   }),
@@ -50,7 +50,6 @@ const actions = module.exports = {
       });
 
   },
-  setLastContext: (state, actions, context) => ({ lastContext: context }),
   reachedPhilosophy: (state, actions) => ({
     activeHop: false,
     reachedPhilosophy: true

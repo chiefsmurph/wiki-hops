@@ -23,13 +23,14 @@ const query = module.exports = (state, actions) => {
           {state.activeHop ? (
             <div>
               <i class="fa fa-spinner fa-spin fa-4x is-green"/>
-              active query: {state.activeQuery}<br/>
+              active query: "{state.activeQuery}"<br/>
               total hops = {hopCount}
             </div>
           ) : state.loopPage ? (
             <div class="is-danger">
               <i class="fa fa-times-circle fa-4x is-red"/>
-              Darn, we ran in to a loop at {state.loopPage}
+              active query: "{state.activeQuery}"<br/>
+              Darn, after {hopCount} hops we ran in to a loop at {state.loopPage}
             </div>
           ) : (
             <div>

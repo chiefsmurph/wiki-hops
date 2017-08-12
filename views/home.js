@@ -7,7 +7,7 @@ const home = module.exports = (state, actions) => {
 
   const onInput = (e) => {
     console.log('input');
-    
+
     const inputVal = e.target.value;
     if (!inputVal.length) return actions.clearFoundQuery();
 
@@ -71,7 +71,7 @@ const home = module.exports = (state, actions) => {
           class="button column is-large is-primary"
           disabled={!!!state.foundQueryPage}
           onclick={beginHop}>
-            Submit {state.activeFetches}
+            Submit
         </a>
       </div>
 

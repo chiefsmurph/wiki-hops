@@ -10,6 +10,7 @@ const actions = module.exports = {
     hops: [],
     activeHop: true,
     activeQuery: page,
+    loopPage: null,
     // reset home vars
     searchVal: null,
     foundQueryPage: null,
@@ -34,11 +35,11 @@ const actions = module.exports = {
           console.log('reached philosophy');
           actions.reachedPhilosophy();
         } else {
-          const visitedPages = state.hops.map(hop => hop.title.toLowerCase());
+          const visitedPages = state.hops.map(hop => hop.title);
           const firstLinkPage = urlToPage(data.firstLink.url);
           console.log('first link page: ', firstLinkPage);
 
-          if (visitedPages.indexOf(data.title.toLowerCase()) === -1) {
+          if (visitedPages.indexOf(data.title) === -1) {
             // if not a loop
             setTimeout(() => actions.requestPage(firstLinkPage), 500);
           } else {

@@ -5,7 +5,8 @@ import query from './query';
 const views = module.exports = [
     ['/', home],
     ['/home', home],
-    ['/query/:query', query],
+    ['/query', query],
+    // ['/query/:query', query],
     ['*', query]
     // ['*', (state, actions) => {
     //   return (

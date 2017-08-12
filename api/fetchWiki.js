@@ -4,8 +4,8 @@ import getFirstLink from './helpers/getFirstLink';
 import urlToPage from './helpers/urlToPage';
 
 const fetchWiki = page => {
-  console.log('searching ', page);
-  const url =`https://en.wikipedia.org/w/api.php?action=parse&page=${page}&prop=text&origin=*&format=json`;
+  console.log('searching ', encodeURIComponent(page));
+  const url =`https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=text&origin=*&format=json`;
   return fetch(url)
     .then(data => data.json())
     .then(json => {

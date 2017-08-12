@@ -65,12 +65,11 @@ const actions = module.exports = {
     }, 1);
   },
   receivedWikiSearch: (state, actions, data) => {
-    const { response, relatedInput } = data;
     actions.decrementActiveFetches();
-    if (relatedInput && relatedInput === state.searchVal) {
+    if (data.relatedInput && data.relatedInput === state.searchVal) {
       // dont do anything if the user has changed the input value since the fetch was initiated
-      console.log('got', response);
-      actions.setFoundQueryPage(response);
+      console.log('got', data);
+      actions.setFoundQueryPage(data);
     }
   },
   clearFoundQuery: (state, actions) => ({ foundQueryPage: null }),

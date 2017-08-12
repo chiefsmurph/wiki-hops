@@ -7,6 +7,9 @@ import './stylesheets/main.scss';
 
 app({
   state: {
+    // home page
+    activeFetches: 0,
+    // query page
     activeQuery: null, // string
     hops: [], // array
   },
@@ -18,9 +21,10 @@ app({
     },
     route: (state, actions, data) => {
       console.log(data);
-      const isRoute = route => data.match.indexOf(route) !== -1 && data.params && data.params.query;
+      const foundPage = decodeURI(location.href.split('?').pop())
+      const isRoute = route => data.match.indexOf(route) !== -1 && foundPage;
       if (isRoute('query')) {
-        actions.beginHop(data.params.query);
+        actions.beginHop(foundPage);
       }
     }
   },

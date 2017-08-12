@@ -1,5 +1,7 @@
 @import '../node_modules/bulma/bulma.sass';
 
+$fa-font-path: "../node_modules/font-awesome/fonts" !default;
+@import "../node_modules/font-awesome/scss/font-awesome";
 
 html,
 body {
@@ -7,55 +9,21 @@ body {
   margin: 0
 }
 
-#hopViewer {
-  display: flex;
-  flex-flow: column;
-  height: 80%;
-  margin: 22px;
+// obvious helpers
+.is-danger {
+  color: $danger;
+  font-weight: bold;
+}
+.is-green {
+  color: green;
+}
+.is-lt-green {
+  color: lightgreen;
+}
+.is-red {
+  color: red;
 }
 
-#hopViewer .row {
-  border: 1px solid black;
-  padding: 10px;
-}
-
-#hopViewer .row.header {
-  flex: 0 1 auto;
-  background-color: black;
-  /* The above is shorthand for:
-  flex-grow: 0,
-  flex-shrink: 1,
-  flex-basis: auto
-  */
-
-  > * {
-    color: white;
-  }
-}
-
-#hopViewer .row.content {
-  flex: 1 1 auto;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-#hopViewer .row.footer {
-  flex: 0 1 40px;
-  text-align: center;
-  padding: 0;
-
-  & > a {
-    color: blue;
-    display: inline-block;
-    padding: 15px;
-    text-decoration: underline;
-    width: 100%;
-
-    &:hover {
-      background-color: lightyellow;
-    }
-  }
-}
 
 
 body {
@@ -79,11 +47,75 @@ body {
     font-style: italic;
     display: inline-block;
   }
-  .box {
-    margin: 20px;
-  }
-  .is-danger {
-    color: $danger;
-    font-weight: bold;
+
+
+}
+
+
+
+#queryPage {
+  height: 100%;
+
+  #hopViewer {
+    display: flex;
+    flex-flow: column;
+    height: 99%;
+    // margin: 22px;
+
+    .box {
+      margin: 20px;
+
+      .fa {
+        margin-right: 20px;
+      }
+    }
+
+    .row {
+      margin: 0 20px;
+
+      &:first-of-type {
+        margin: 0 0 10px;
+      }
+
+      &.header {
+        flex: 0 1 auto;
+        background-color: black;
+        padding: 10px;
+
+        & > * {
+          color: white;
+        }
+      }
+      &.content {
+        border: 1px solid black;
+        padding: 10px;
+        flex: 1 1 auto;
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
+      &.footer {
+        flex: 0 1 40px;
+        text-align: center;
+        padding: 0;
+        margin: 5px 20px;
+        border: 1px solid black;
+
+        & > a {
+          color: blue;
+          display: inline-block;
+          padding: 15px;
+          text-decoration: underline;
+          width: 100%;
+
+          .fa {
+            margin-right: 10px;
+          }
+          &:hover {
+            background-color: lightyellow;
+          }
+        }
+      }
+
+    }
   }
 }

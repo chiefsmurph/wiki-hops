@@ -7,27 +7,29 @@ const home = module.exports = (state, actions) => {
 
   const onInput = (e) => {
     console.log('input');
+    
     const inputVal = e.target.value;
     if (!inputVal.length) return actions.clearFoundQuery();
+
     actions.setSearchVal(inputVal);
     console.log(inputVal, 'inputval');
+
     const page = urlToPage(inputVal);
     actions.incrementActiveFetches();
     fetchWiki(page)
         .then(data => {
-          actions.receivedWikiSearch({
-            response: data,
-            relatedInput: inputVal
-          });
+          data.relatedInput = inputVal;
+          actions.receivedWikiSearch(data);
         })
         .catch(e => {
-          console.log('error, e');
+          console.log('error, e', e);
+          actions.decrementActiveFetches();
           actions.clearFoundQuery();
         });
   };
 
   const onEnter = (e) => {
-    if (state.foundQueryPage) {
+    if (state.foundQueryPage && state.searchVal === state.foundQueryPage.relatedInput) {
       // enter key
       beginHop();
     }
@@ -35,10 +37,9 @@ const home = module.exports = (state, actions) => {
 
   const beginHop = () => {
     console.log('queryi click');
-    actions.router.go(`/query/${encodeURIComponent(state.foundQueryPage.title)}`);
+    actions.router.go(`/query/?${encodeURIComponent(state.foundQueryPage.title)}`);
   };
 
-  const inputClass = 'input is-large column is-three-quarters' + ((state.activeFetches > 0) ? ' is-loading' : '');
   return (
     <div>
       <section class="hero is-primary">
@@ -53,19 +54,24 @@ const home = module.exports = (state, actions) => {
       </section>
 
       <div class="columns is-vcentered is-marginless" id="queryControls">
-        <input
-          class={inputClass}
-          type="text"
-          id="wikiURL"
-          placeholder="URL or page"
-          oninput={onInput}
-          onkeypress={e => { if (e.keyCode === 13) onEnter(); }}/>
+        <section class="column is-three-quarters">
+          <div class={'control is-large' + (state.activeFetches > 0 ? ' is-loading' : '')}>
+              <input
+                class='input is-large'
+                type="text"
+                id="wikiURL"
+                placeholder="URL or page"
+                oninput={onInput}
+                autofocus
+                onkeypress={e => { if (e.keyCode === 13) onEnter(); }}/>
+          </div>
+        </section>
         <a
           id="submitBtn"
           class="button column is-large is-primary"
           disabled={!!!state.foundQueryPage}
           onclick={beginHop}>
-            Submit
+            Submit {state.activeFetches}
         </a>
       </div>
 

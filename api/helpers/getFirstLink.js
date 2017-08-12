@@ -26,7 +26,7 @@ const getFirstLink = ($, page) => {
     if (!isInParens($activeLink)) {
       console.log('found valid first link at ', linkNum+1);
       firstLink = {
-          url: $activeLink.attr('href'),
+          url: decodeURI($activeLink.attr('href')),
           text: $activeLink.text(),
           context: getContext($activeLink)
       };

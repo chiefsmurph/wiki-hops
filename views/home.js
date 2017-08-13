@@ -22,7 +22,7 @@ const Home = (state, actions) => {
 
       <div class="columns is-vcentered is-marginless" id="queryControls">
         <section class="column is-three-quarters">
-          <div class={'control is-large' + (state.activeFetches > 0 ? ' is-loading' : '')}>
+          <div class={'control is-large' + ((state.activeFetches > 0 || state.pendingEnter) ? ' is-loading' : '')}>
               <input
                 class='input is-large'
                 type="text"

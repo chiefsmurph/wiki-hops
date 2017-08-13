@@ -1,13 +1,12 @@
 import { h } from 'hyperapp';
-import home from './home';
-import query from './query';
+import Home from './home';
+import Query from './query';
 
-const views = module.exports = [
-    ['/', home],
-    ['/home', home],
-    ['/query', query],
-    // ['/query/:query', query],
-    ['*', query]
+export default [
+    ['/', Home],
+    ['/home', Home],
+    ['/query', Query],
+    ['*', Query]
     // ['*', (state, actions) => {
     //   return (
     //     <b>{location.pathname}</b>

@@ -3,7 +3,7 @@ import urlToPage from '../api/helpers/urlToPage';
 import fetchWiki from '../api/fetchWiki';
 import Context from '../components/context';
 
-const home = module.exports = (state, actions) => {
+const Home = (state, actions) => {
 
   const onInput = (e) => {
     console.log('input');

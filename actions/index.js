@@ -20,6 +20,7 @@ const actions = module.exports = {
   }),
   beginHop: (state, actions, page) => {
     console.log('beginning hops for ', page);
+    page = urlToPage(page);
     actions.newQuery(page);
     actions.requestPage(page);
   },

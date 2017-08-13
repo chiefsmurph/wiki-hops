@@ -1,0 +1,16 @@
+.level-left {
+  width: 100%;
+  padding-left: 2vw;
+  
+  .level-item {
+    // prevents second level-item from extending beyond width of box / level
+    flex-shrink: 1;
+    justify-content: left;
+
+    &.is-narrow {
+      // prevents text move when fa icon loads
+      width: 80px;
+      justify-content: right;
+    }
+  }
+}

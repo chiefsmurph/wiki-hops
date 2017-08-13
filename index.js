@@ -1,9 +1,9 @@
 import { h, app, Router } from 'hyperapp';
+
+import './stylesheets/main.scss';
+
 import actions from './actions/';
 import view from './views';
-
-// mixins
-import './stylesheets/main.scss';
 
 app({
   state: {

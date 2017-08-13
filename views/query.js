@@ -1,7 +1,8 @@
 import { h } from 'hyperapp';
-import Context from '../components/context';
+import HopViewer from '../components/hop-viewer';
+import FaBox from '../components/fa-box';
 
-const query = module.exports = (state, actions) => {
+const Query = (state, actions) => {
 
   let hopCount = state.hops.length - 1;
   hopCount = hopCount > 0 ? hopCount : '--';
@@ -21,22 +22,21 @@ const query = module.exports = (state, actions) => {
 
         <div class={state.activeHop ? 'row box is-loading' : 'row box'}>
           {state.activeHop ? (
-            <div>
-              <i class="fa fa-spinner fa-spin fa-4x is-green"/>
-              active query: "{state.activeQuery}"<br/>
-              total hops = {hopCount}
-            </div>
+            <FaBox
+              faClasses="fa-spinner fa-spin is-green">
+                active query: "{state.activeQuery}"<br/>
+                total hops = {hopCount}
+            </FaBox>
           ) : state.loopPage ? (
-            <div class="is-danger">
-              <i class="fa fa-times-circle fa-4x is-red"/>
-              active query: "{state.activeQuery}"<br/>
-              Darn, after {hopCount} hops we ran in to a loop at {state.loopPage}
-            </div>
+            <FaBox
+              faClasses="fa-times-circle is-red is-danger">
+                Darn, we started at "{state.activeQuery}" but after {hopCount} hops we ran in to a loop at "{state.loopPage}"
+            </FaBox>
           ) : (
-            <div>
-              <i class="fa fa-check-circle-o fa-4x is-green"/>
-              number of steps to reach "Philosophy" from "{state.activeQuery}": {hopCount}
-            </div>
+            <FaBox
+              faClasses="fa-check-circle-o fa-4x is-green">
+                number of steps to reach "Philosophy" from "{state.activeQuery}": {hopCount}
+            </FaBox>
           )}
         </div>
 
@@ -45,18 +45,10 @@ const query = module.exports = (state, actions) => {
         </div>
 
         <div class="row content" onupdate={actions.scrollToBottom}>
-          <div style={{ height: '80%' }}>
-            {state.hops.map((hop, i) => (
-              <div class="columns">
-                <div class={'column is-one-third' + (state.loopPage === hop.title ? ' is-danger' : '')}>
-                  {i === 0 ? 'starting at...' : i + '. '}{hop.title}
-                </div>
-                <div class="column">
-                  <Context firstLink={hop.firstLink}/>
-                </div>
-              </div>
-            ))}
-          </div>
+          <HopViewer
+            style={{height: '80%'}}
+            hops={state.hops}
+            loopPage={state.loopPage} />
         </div>
         <div class="row footer">
           <a onclick={() => actions.router.go('/home')}>
@@ -70,3 +62,5 @@ const query = module.exports = (state, actions) => {
   )
 
 };
+
+export default Query;

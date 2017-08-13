@@ -1,7 +1,7 @@
 import { h } from 'hyperapp';
 import Context from './context';
 
-export default ({ hops, loopPage }) => {
+const HopViewer = ({ hops, loopPage }) => {
   return (
     <div>
       {hops.map((hop, i) => (
@@ -20,3 +20,5 @@ export default ({ hops, loopPage }) => {
     </div>
   );
 };
+
+export default HopViewer;

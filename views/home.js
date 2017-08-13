@@ -1,44 +1,11 @@
 import { h } from 'hyperapp';
-import urlToPage from '../api/helpers/urlToPage';
-import fetchWiki from '../api/fetchWiki';
+
+// import urlToPage from '../api/helpers/url-to-page';
+// import fetchWiki from '../api/fetch-wiki';
+
 import Context from '../components/context';
 
 const Home = (state, actions) => {
-
-  const onInput = (e) => {
-    console.log('input');
-
-    const inputVal = e.target.value;
-    if (!inputVal.length) return actions.clearFoundQuery();
-
-    actions.setSearchVal(inputVal);
-    console.log(inputVal, 'inputval');
-
-    const page = urlToPage(inputVal);
-    actions.incrementActiveFetches();
-    fetchWiki(page)
-        .then(data => {
-          data.relatedInput = inputVal;
-          actions.receivedWikiSearch(data);
-        })
-        .catch(e => {
-          console.log('error, e', e);
-          actions.decrementActiveFetches();
-          actions.clearFoundQuery();
-        });
-  };
-
-  const onEnter = (e) => {
-    if (state.foundQueryPage && state.searchVal === state.foundQueryPage.relatedInput) {
-      // enter key
-      beginHop();
-    }
-  };
-
-  const beginHop = () => {
-    console.log('queryi click');
-    actions.router.go(`/query/?${encodeURIComponent(state.foundQueryPage.title)}`);
-  };
 
   return (
     <div>
@@ -61,16 +28,16 @@ const Home = (state, actions) => {
                 type="text"
                 id="wikiURL"
                 placeholder="URL or page"
-                oninput={onInput}
-                autofocus
-                onkeypress={e => { if (e.keyCode === 13) onEnter(); }}/>
+                oninput={actions.onInput}
+                onkeypress={e => { if (e.keyCode === 13) actions.onEnter(); }}
+                autofocus />
           </div>
         </section>
         <a
           id="submitBtn"
           class="button column is-large is-primary"
           disabled={!!!state.foundQueryPage}
-          onclick={beginHop}>
+          onclick={actions.beginQuery}>
             Submit
         </a>
       </div>
@@ -89,7 +56,19 @@ const Home = (state, actions) => {
         </section>
       )}
 
+      {(!state.foundQueryPage && state.searchVal && state.activeFetches === 0) && (
+        <section class="section">
+        <div id="foundPage" class="content message is-danger">
+          <div class="message-body">
+              We were unable to find a related Wikipedia article for "{state.searchVal}".
+          </div>
+        </div>
+        </section>
+      )}
+
     </div>
   );
 
 };
+
+export default Home;

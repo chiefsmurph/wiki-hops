@@ -1,7 +1,7 @@
 import cheerio from 'cheerio';
 
-import getFirstLink from './helpers/getFirstLink';
-import urlToPage from './helpers/urlToPage';
+import getFirstLink from './helpers/get-first-link';
+import urlToPage from './helpers/url-to-page';
 
 const fetchWiki = page => {
   console.log('searching ', encodeURIComponent(page));

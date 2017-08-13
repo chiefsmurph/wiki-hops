@@ -1,9 +1,9 @@
 import { h } from 'hyperapp';
-import '../stylesheets/faBox.scss';
+import '../stylesheets/fa-box.scss';
 
-export default ({ faClasses }, children) => {
+const FaBox = ({ faClasses }, children) => {
   // creates a permanently (desktop and mobile, etc) horizontal
-  // box with a font awesome icon on the left
+  // box with a 3x sized font awesome icon on the left
   return (
     <div class="level is-mobile">
       <div class="level-left">
@@ -17,3 +17,5 @@ export default ({ faClasses }, children) => {
     </div>
   );
 };
+
+export default FaBox;

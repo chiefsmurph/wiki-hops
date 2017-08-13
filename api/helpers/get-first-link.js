@@ -1,5 +1,5 @@
-import getContext from './getContext';
-import isInParens from './isInParens';
+import getContext from './get-context';
+import isInParens from './is-in-parens';
 
 const getFirstLink = ($, page) => {
 

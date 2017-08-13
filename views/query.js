@@ -51,7 +51,7 @@ const Query = (state, actions) => {
             loopPage={state.loopPage} />
         </div>
         <div class="row footer">
-          <a onclick={() => actions.router.go('/home')}>
+          <a onclick={actions.backToHome}>
             <i class="fa fa-arrow-left" />
             click here to go back and scan another wiki URL or page
           </a>

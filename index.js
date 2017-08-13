@@ -8,10 +8,15 @@ import view from './views';
 app({
   state: {
     // home page
-    activeFetches: 0,
+    activeFetches: 0,     // number
+    pendingEnter: false,  // boolean
+    searchVal: null,      // string
+    foundQueryPage: null  // {}
     // query page
-    activeQuery: null, // string
-    hops: [], // array
+    activeQuery: null,    // string
+    hops: [],             // array
+    activeHop: false,     // boolean
+    loopPage: null,       // string
   },
   view,
   actions,

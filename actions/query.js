@@ -6,13 +6,15 @@ export default {
   // state changes
   newQuery: (state, actions, page) => ({
     // reset query vars
-    hops: [],
-    activeHop: true,
-    activeQuery: page,
-    loopPage: null,
+    activeQuery: page,    // string
+    hops: [],             // array
+    activeHop: true,     // boolean
+    loopPage: null,       // string
     // reset home vars
-    searchVal: null,
-    foundQueryPage: null,
+    activeFetches: 0,     // number
+    pendingEnter: false,  // boolean
+    searchVal: null,      // string
+    foundQueryPage: null  // {}
   }),
   addHop: (state, actions, hop) => ({
     hops: state.hops.concat([hop])

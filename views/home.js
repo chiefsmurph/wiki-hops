@@ -28,7 +28,7 @@ const Home = (state, actions) => {
                 class='input is-large'
                 type="text"
                 id="wikiURL"
-                placeholder="URL or page name"
+                placeholder="Wikipedia URL or page name"
                 oninput={actions.onInput}
                 onkeypress={e => { if (e.keyCode === 13) actions.onEnter(); }}
                 oncreate={element => { setTimeout(() => element.focus(), 1); }}  // autofocus hack

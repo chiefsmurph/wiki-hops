@@ -11,7 +11,7 @@ export default {
   incrementActiveFetches: (state, actions) => ({ activeFetches: state.activeFetches + 1 }),
   decrementActiveFetches: (state, actions) => ({ activeFetches: state.activeFetches - 1 }),
   // actions
-  onInput: (state, actions, e) => {
+  onInput(state, actions, e) {
     console.log('input', state, actions, e);
 
     const inputVal = e.target.value;
@@ -34,7 +34,7 @@ export default {
           actions.clearFoundQuery();
         });
   },
-  onEnter: (state, actions) => {
+  onEnter(state, actions) {
     if (state.foundQueryPage && state.searchVal === state.foundQueryPage.relatedInput) {
       actions.beginQuery();
       // check to make sure a related wikipedia has been found
@@ -43,7 +43,7 @@ export default {
       actions.setPendingEnter(true);
     }
   },
-  receivedWikiSearch: (state, actions, data) => {
+  receivedWikiSearch(state, actions, data) {
     actions.decrementActiveFetches();
     if (data.relatedInput && data.relatedInput === state.searchVal) {
       // dont do anything if the user has changed the input value since the fetch was initiated
@@ -54,7 +54,7 @@ export default {
       }
     }
   },
-  beginQuery: (state, actions) => {
+  beginQuery(state, actions) {
     console.log('begin hop attempt');
     const uriEncodedPage = encodeURIComponent(state.foundQueryPage.title)
     actions.goToRoute(`query/?${uriEncodedPage}`);

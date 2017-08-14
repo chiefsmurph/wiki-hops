@@ -8,7 +8,7 @@ const isInParens = ($link) => {
 
   let openParens = 0;
   let closeParens = 0;
-  for (let i = 0; i < textContent.indexOf(linkText); i++) {
+  for (let i = 0; i < textContent.indexOf(linkText) + 1; i++) {
     if (textContent.substring(i, i + 1) === '(') {
       openParens++;
     } else if (textContent.substring(i, i + 1) === ')') {

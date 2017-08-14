@@ -29,13 +29,13 @@ export default {
     loopPage: page
   }),
   // actions
-  beginHop: (state, actions, page) => {
+  beginHop(state, actions, page) {
     console.log('beginning hops for ', page);
     page = urlToPage(page);
     actions.newQuery(page);
     actions.requestPage(page);
   },
-  requestPage: (state, actions, page) => {
+  requestPage(state, actions, page) {
     if (!state.activeHop) return; // make sure query has not been canceled
     fetchWiki(page)
       .then(data => {
@@ -70,20 +70,20 @@ export default {
       });
 
   },
-  errorFetching: (state, actions, errorPage) => {
+  errorFetching(state, actions, errorPage) {
     return {
       activeHop: false,
       errorPage
     };
   },
-  backToHome: (state, actions) => {
+  backToHome(state, actions) {
     actions.goToRoute('home');
     return {
       activeHop: false  // prevents query from continuing if in progress
     };
   },
   // UI
-  scrollToBottom: (state, actions, el) => {
+  scrollToBottom(state, actions, el) {
     setTimeout(() => {
       el.scrollTop = el.scrollHeight;
     }, 1);

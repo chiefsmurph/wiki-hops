@@ -1,21 +1,19 @@
 import homeActions from './home';
 import queryActions from './query';
 
-const actions = Object.assign({},
-  {
-    init: () => {
-      alert('initting');
-    },
-    goToRoute: (state, actions, route) => {
-      // for github-pages
-      const isGitHubPages = location.pathname.indexOf('wiki-hops') !== -1;
-      const path = !isGitHubPages ? '/' : '/wiki-hops/'
-      console.log('isGitHubPages', isGitHubPages, path);
-      actions.router.go(path + route);
-    }
+const actions = {
+  init: () => {
+    alert('initting');
   },
-  homeActions,
-  queryActions
-);
+  goToRoute: (state, actions, route) => {
+    // for github-pages
+    const isGitHubPages = location.pathname.indexOf('wiki-hops') !== -1;
+    const path = !isGitHubPages ? '/' : '/wiki-hops/'
+    console.log('isGitHubPages', isGitHubPages, path);
+    actions.router.go(path + route);
+  },
+  ...homeActions,
+  ...queryActions
+};
 
 export default actions;

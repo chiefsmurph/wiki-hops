@@ -10,7 +10,7 @@ const Query = (state, actions) => {
   hopCount = hopCount > 0 ? hopCount : '--';
 
   return (
-    <div id="queryPage">
+    <div id="queryPage" key="queryPage">
 
       <section id="hopViewer">
 

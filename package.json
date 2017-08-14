@@ -7,7 +7,7 @@
     "build": "webpack -p",
     "watch": "webpack -p -w",
     "serve": "http-server-spa dist",
-    "gitpages" : "git subtree push --prefix dist origin gh-pages"
+    "gitpages": "git subtree push --prefix dist origin gh-pages"
   },
   "repository": {
     "type": "git",

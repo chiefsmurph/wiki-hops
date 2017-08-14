@@ -9,7 +9,7 @@ import '../stylesheets/home.scss';
 const Home = (state, actions) => {
 
   return (
-    <div id="homePage">
+    <div id="homePage" key="homePage">
       <section class="hero is-primary">
         <div class="hero-body">
           <h1 class="title is-1">wiki-hops</h1>
@@ -31,7 +31,8 @@ const Home = (state, actions) => {
                 placeholder="URL or page"
                 oninput={actions.onInput}
                 onkeypress={e => { if (e.keyCode === 13) actions.onEnter(); }}
-                autofocus />
+                oncreate={element => { setTimeout(() => element.focus(), 1); }}  // autofocus hack
+                />
           </div>
         </section>
         <a

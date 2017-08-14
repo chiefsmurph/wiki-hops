@@ -8,8 +8,8 @@ const actions = Object.assign({},
     },
     goToRoute: (state, actions, route) => {
       // for github-pages
-      const isGitHubPages = location.pathname.indexOf('wiki-hops') === -1;
-      const path = isGitHubPages ? '/' : '/wiki-hops/'
+      const isGitHubPages = location.pathname.indexOf('wiki-hops') !== -1;
+      const path = !isGitHubPages ? '/' : '/wiki-hops/'
       console.log('isGitHubPages', isGitHubPages, path);
       actions.router.go(path + route);
     }

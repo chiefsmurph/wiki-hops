@@ -7,7 +7,10 @@ const actions = Object.assign({},
       alert('initting');
     },
     goToRoute: (state, actions, route) => {
-      const path = location.pathname.indexOf('wiki-hops') === -1 ? '/' : '/wiki-hops/'
+      // for github-pages
+      const isGitHubPages = location.pathname.indexOf('wiki-hops') === -1;
+      const path = isGitHubPages ? '/' : '/wiki-hops/'
+      console.log('isGitHubPages', isGitHubPages, path);
       actions.router.go(path + route);
     }
   },

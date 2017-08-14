@@ -17,7 +17,7 @@ const Home = (state, actions) => {
       </section>
 
       <section class="section">
-        <h2 class="title">Type in a wikipedia URL and I will tell you how many hops it takes to get from that article to Wikipedias "philosophy" article by clicking on the first link in the article body.</h2>
+        <h2 class="title">Type in a wikipedia URL or page name and I will tell you how many hops it takes to get from that article to Wikipedias "philosophy" article by clicking on the first link in the article body.</h2>
         <h3 class="subtitle">97% of articles make it back there.</h3>
       </section>
 
@@ -28,7 +28,7 @@ const Home = (state, actions) => {
                 class='input is-large'
                 type="text"
                 id="wikiURL"
-                placeholder="URL or page"
+                placeholder="URL or page name"
                 oninput={actions.onInput}
                 onkeypress={e => { if (e.keyCode === 13) actions.onEnter(); }}
                 oncreate={element => { setTimeout(() => element.focus(), 1); }}  // autofocus hack

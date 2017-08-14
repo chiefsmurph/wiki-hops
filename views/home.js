@@ -5,10 +5,11 @@ import { h } from 'hyperapp';
 
 import Context from '../components/context';
 
+import '../stylesheets/home.scss';
 const Home = (state, actions) => {
 
   return (
-    <div>
+    <div id="homePage">
       <section class="hero is-primary">
         <div class="hero-body">
           <h1 class="title is-1">wiki-hops</h1>

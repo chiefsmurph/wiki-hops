@@ -1,6 +1,8 @@
 import { h } from 'hyperapp';
 import HopViewer from '../components/hop-viewer';
-import FaBox from '../components/fa-box';
+import StatusBox from '../components/status-box';
+
+import '../stylesheets/query.scss';
 
 const Query = (state, actions) => {
 
@@ -20,24 +22,13 @@ const Query = (state, actions) => {
           </section>
         </div>
 
-        <div class={state.activeHop ? 'row box is-loading' : 'row box'}>
-          {state.activeHop ? (
-            <FaBox
-              faClasses="fa-spinner fa-spin is-green">
-                active query: "{state.activeQuery}"<br/>
-                total hops = {hopCount}
-            </FaBox>
-          ) : state.loopPage ? (
-            <FaBox
-              faClasses="fa-times-circle is-red is-danger">
-                Darn, we started at "{state.activeQuery}" but after {hopCount} hops we ran in to a loop at "{state.loopPage}"
-            </FaBox>
-          ) : (
-            <FaBox
-              faClasses="fa-check-circle-o fa-4x is-green">
-                number of steps to reach "Philosophy" from "{state.activeQuery}": {hopCount}
-            </FaBox>
-          )}
+        <div class='row' id="statusBox">
+          <StatusBox
+              activeQuery={state.activeQuery}
+              activeHop={state.activeHop}
+              hopCount={hopCount}
+              loopPage={state.loopPage}
+              errorPage={state.errorPage} />
         </div>
 
         <div class="row header">
@@ -50,12 +41,14 @@ const Query = (state, actions) => {
             hops={state.hops}
             loopPage={state.loopPage} />
         </div>
+
         <div class="row footer">
           <a onclick={actions.backToHome}>
             <i class="fa fa-arrow-left" />
             click here to go back and scan another wiki URL or page
           </a>
         </div>
+
       </section>
 
     </div>

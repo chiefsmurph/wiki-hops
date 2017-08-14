@@ -19,6 +19,10 @@ const getFirstLink = ($, page) => {
         $(el).attr('rel') === 'nofollow';
   });
 
+  if (allLinks.length === 0) {
+    return null;
+  }
+
   let linkNum = 0;
   while (!firstLink) {
     // start by examining first link checking whether valid and move to next if not

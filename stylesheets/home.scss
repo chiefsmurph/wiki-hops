@@ -1,0 +1,12 @@
+#homePage {
+  #queryControls {
+    padding: 0 50px;
+
+    & > * {
+      border-radius: 0;
+    }
+  }
+  #submitBtn {
+    padding: 7px;
+  }
+}

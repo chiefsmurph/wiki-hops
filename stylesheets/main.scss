@@ -9,6 +9,8 @@ body {
   margin: 0
 }
 
+
+
 // obvious helpers
 .is-danger {
   color: $danger;
@@ -32,105 +34,10 @@ body {
   .hero.is-primary * {
     color: black !important;
   }
-
-  #queryControls {
-    padding: 0 50px;
-
-    & > * {
-      border-radius: 0;
-    }
-  }
-  #submitBtn {
-    padding: 7px;
-  }
   .context {
     font-style: italic;
     display: inline-block;
   }
 
 
-}
-
-
-
-#queryPage {
-  height: 100%;
-
-  #hopViewer {
-    display: flex;
-    flex-flow: column;
-    height: 99%;
-    // margin: 22px;
-
-    .row {
-      margin: 0 1vw;
-
-      &:first-of-type {
-        margin: 0 0 10px;
-      }
-
-      &.box {
-        border-radius: 5px 5px 0 0;
-        box-shadow: none;
-        border: 1px solid black;
-        font-size: 20px;
-        background-color: lightyellow;
-
-        .level {
-          height: 100px;
-        }
-        .fa {
-          margin-right: 20px;
-        }
-      }
-
-      &.header {
-        flex: 0 1 auto;
-        background-color: black;
-        padding: 10px;
-
-        & > * {
-          color: white;
-        }
-      }
-      &.content {
-        border: 1px solid black;
-        padding: 10px;
-        flex: 1 1 auto;
-        overflow-x: hidden;
-        overflow-y: scroll;
-
-        .fa {
-          color: blue;
-          position: relative;
-          left: 10px;
-          top: 6px;
-          font-size: 80%;
-        }
-      }
-      &.footer {
-        flex: 0 1 40px;
-        text-align: center;
-        padding: 0;
-        margin: 5px 1vw;
-        border: 1px solid black;
-
-        & > a {
-          color: blue;
-          display: inline-block;
-          padding: 15px;
-          text-decoration: underline;
-          width: 100%;
-
-          .fa {
-            margin-right: 10px;
-          }
-          &:hover {
-            background-color: lightyellow;
-          }
-        }
-      }
-
-    }
-  }
 }

@@ -23,6 +23,12 @@ const fetchWiki = page => {
 
       // else return the first non-paren link
       const firstLink = getFirstLink($, page);
+      console.log(firstLink, 'firstLink');
+      if (!firstLink) {
+        console.log('whatttt');
+        throw Error('no links found');
+      }
+      console.log('still going')
       return {
           title: json.parse.title,
           firstLink

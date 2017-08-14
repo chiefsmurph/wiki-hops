@@ -13,7 +13,11 @@ const HopViewer = ({ hops, loopPage }) => {
             </a>
           </div>
           <div class="column">
-            <Context firstLink={hop.firstLink}/>
+            {hop.firstLink.context ? (
+              <Context firstLink={hop.firstLink}/>
+            ) : (
+              <b class="is-danger">no links found</b>
+            )}
           </div>
         </div>
       ))}

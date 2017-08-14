@@ -8,8 +8,9 @@ export default {
     // reset query vars
     activeQuery: page,    // string
     hops: [],             // array
-    activeHop: true,     // boolean
+    activeHop: true,      // boolean
     loopPage: null,       // string
+    errorPage: null,      // string
     // reset home vars
     activeFetches: 0,     // number
     pendingEnter: false,  // boolean
@@ -59,8 +60,21 @@ export default {
           }
         }
 
+      })
+      .catch(e => {
+        actions.addHop({
+          title: page,
+          firstLink: {}
+        });
+        actions.errorFetching(page);
       });
 
+  },
+  errorFetching: (state, actions, errorPage) => {
+    return {
+      activeHop: false,
+      errorPage
+    };
   },
   backToHome: (state, actions) => {
     actions.router.go('/home');

@@ -77,7 +77,7 @@ export default {
     };
   },
   backToHome: (state, actions) => {
-    actions.router.go('/home');
+    actions.goToRoute('home');
     return {
       activeHop: false  // prevents query from continuing if in progress
     };

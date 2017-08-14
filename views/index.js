@@ -12,10 +12,10 @@ export default [
     ['/wiki-hops/home', Home],
     ['/wiki-hops/query', Query],
     // 404
-    ['*', Home]
-    // ['*', (state, actions) => {
-    //   return (
-    //     <b>{location.pathname}</b>
-    //   );
-    // }]
+    // ['*', Home]
+    ['*', (state, actions) => {
+      return (
+        <b>{location.pathname}</b>
+      );
+    }]
 ];

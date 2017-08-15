@@ -11,3 +11,5 @@ using Webpack, Babel w/ stage 2 preset, ES6, HyperApp and responsively styled wi
 ## to-do
 
 * cache wiki requests
+
+![wiki hops](https://user-images.githubusercontent.com/11671559/29298009-b305cc10-8119-11e7-81f3-dff356e647a0.gif)

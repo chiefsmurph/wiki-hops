@@ -1,7 +1,6 @@
-const MAX_CONTEXT_LENGTH = 425; // characters
+import settings from '../../state/settings';
 
 const getContext = ($link) => {
-
   const linkText = $link.text();
   const parentText = ($link.parent().text().length > linkText.length + 4)
       ? $link.parent().text()
@@ -9,7 +8,7 @@ const getContext = ($link) => {
 
   let foundText = false;
   let context = '';
-  for (var i = 0; i < Math.min(parentText.length, MAX_CONTEXT_LENGTH); i++) {
+  for (var i = 0; i < Math.min(parentText.length, settings.maxContextLength); i++) {
     if (parentText.substring(i, i + linkText.length) === linkText) {
       foundText = true;
     } else if (parentText[i] === '.' && foundText) {

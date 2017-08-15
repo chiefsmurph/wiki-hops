@@ -4,12 +4,15 @@ import { h } from 'hyperapp';
 // import fetchWiki from '../api/fetch-wiki';
 
 import Context from '../components/context';
+import CodeLink from '../components/code-link';
 
 import '../stylesheets/home.scss';
 const Home = (state, actions) => {
 
   return (
     <div id="homePage" key="homePage">
+
+      <CodeLink/>
       <section class="hero is-primary">
         <div class="hero-body">
           <h1 class="title is-1">wiki-hops</h1>

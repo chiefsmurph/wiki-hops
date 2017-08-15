@@ -28,7 +28,7 @@ const getFirstLink = ($, page) => {
     // start by examining first link checking whether valid and move to next if not
     const $activeLink = allLinks.eq(linkNum);
     if (!isInParens($activeLink)) {
-      console.log('found valid first link at ', linkNum+1);
+      console.log('first valid link: ', linkNum+1);
       firstLink = {
           url: decodeURI($activeLink.attr('href')),
           text: $activeLink.text(),

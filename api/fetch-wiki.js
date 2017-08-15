@@ -3,8 +3,8 @@ import cheerio from 'cheerio';
 import getFirstLink from './helpers/get-first-link';
 import urlToPage from './helpers/url-to-page';
 
-const fetchWiki = page => {
-  console.log('searching ', encodeURIComponent(page));
+const fetchWiki = (page) => {
+  console.log('executing ', page);
   const url =`https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=text&origin=*&format=json`;
   return fetch(url)
     .then(data => data.json())
@@ -23,18 +23,18 @@ const fetchWiki = page => {
 
       // else return the first non-paren link
       const firstLink = getFirstLink($, page);
-      console.log(firstLink, 'firstLink');
+      // console.log(firstLink, 'firstLink');
       if (!firstLink) {
         console.log('whatttt');
         throw Error('no links found');
       }
-      console.log('still going')
+      // console.log('still going')
       return {
           title: json.parse.title,
           firstLink
       };
 
     });
-
 };
+
 export default fetchWiki;

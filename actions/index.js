@@ -3,7 +3,7 @@ import queryActions from './query';
 
 const actions = {
   init: () => {
-    alert('initting');
+    console.log('welcome to wiki-hops');
   },
   goToRoute: (state, actions, route) => {
     // for github-pages

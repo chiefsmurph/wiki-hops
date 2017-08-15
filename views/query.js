@@ -1,6 +1,7 @@
 import { h } from 'hyperapp';
 import HopViewer from '../components/hop-viewer';
 import StatusBox from '../components/status-box';
+import CodeLink from '../components/code-link';
 
 import '../stylesheets/query.scss';
 
@@ -12,6 +13,7 @@ const Query = (state, actions) => {
   return (
     <div id="queryPage" key="queryPage">
 
+      <CodeLink/>
       <section id="hopViewer">
 
         <div class="row">

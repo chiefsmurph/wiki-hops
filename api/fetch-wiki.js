@@ -1,3 +1,5 @@
+import 'whatwg-fetch';  // fetch polyfill
+
 import cheerio from 'cheerio';
 
 import getFirstLink from './helpers/get-first-link';

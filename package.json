@@ -40,6 +40,7 @@
     "bulma": "^0.5.1",
     "cheerio": "^1.0.0-rc.2",
     "font-awesome": "^4.7.0",
-    "hyperapp": "^0.9.3"
+    "hyperapp": "^0.9.3",
+    "whatwg-fetch": "^2.0.3"
   }
 }

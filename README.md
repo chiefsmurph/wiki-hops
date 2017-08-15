@@ -1,6 +1,6 @@
 # wiki-hops
 
-using Webpack, Babel w/ stage 2 preset, ES6, HyperApp and responsively styled with the help of Bulma and Font Awesome
+using Webpack, Babel w/ stage 2 preset, ES6, HyperApp and responsively styled with the help of SCSS, Bulma and Font Awesome
 
 ## installation
 

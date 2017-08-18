@@ -5,7 +5,8 @@ const getFirstLink = ($, page) => {
 
   let firstLink = null;
 
-  let allLinks = $('p > a').length ? $('p > a') : $('a');
+  let allLinks = $('p > a, ul a');
+  if (!allLinks.length) allLinks = $('a');
   // $('a') = if a wiki page has no article body then go to first redirect link
   allLinks = allLinks.not((i, el) => {
     // remove all links that refer to the current page or 'nofollow'
@@ -19,6 +20,8 @@ const getFirstLink = ($, page) => {
         $(el).attr('rel') === 'nofollow';
   });
 
+  console.log(allLinks, 'allLinks')
+  
   if (allLinks.length === 0) {
     return null;
   }

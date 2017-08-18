@@ -32,7 +32,7 @@ const isLink = (node, $link) => {
 const isInParens = ($link) => {
 
   const linkText = $link.text();
-  const $parent = $link.parent('p');
+  const $parent = $link.parent();
 
   const contents = $parent.contents();
 

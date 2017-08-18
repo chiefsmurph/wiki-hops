@@ -34,11 +34,7 @@ const isInParens = ($link) => {
 
   const linkText = $link.text();
   const $parent = $link.parent();
-
   const contents = $parent.contents();
-
-  const textContent = $parent.text();
-  console.log('is in parens? ', linkText);
 
   let i = 0;
   const parenCounts = [];

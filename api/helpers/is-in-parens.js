@@ -23,10 +23,11 @@ const countParens = node => {
 
 const isLink = (node, $link) => {
   // compares a given node to the $link
-  return node.type === "tag" &&
-      node.name === 'a' &&
-      node.attribs.href === $link.attr('href') &&
-      node.children && node.children[0].data === $link.text();
+  return $link.is(node);
+  // return node && node.type === "tag" &&
+  //     node.name === 'a' &&
+  //     node.attribs.href === $link.attr('href') &&
+  //     node.children && node.children[0].data === $link.text();
 };
 
 const isInParens = ($link) => {
@@ -37,6 +38,7 @@ const isInParens = ($link) => {
   const contents = $parent.contents();
 
   const textContent = $parent.text();
+  console.log('is in parens? ', linkText);
 
   let i = 0;
   const parenCounts = [];

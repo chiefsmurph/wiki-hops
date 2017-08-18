@@ -1,4 +1,4 @@
 export default {
-    cacheRequests: true,
+    cacheRequests: false,
     maxContextLength: 425
 };

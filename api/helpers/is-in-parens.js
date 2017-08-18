@@ -1,22 +1,55 @@
+const sumArrayOfObjs = arr => {
+  return arr.reduce((acc, individualObj) => {
+    Object.keys(individualObj).forEach(key => {
+      acc[key] = (acc[key] || 0) + individualObj[key];
+    });
+    return acc;
+  }, {});;
+};
+
+const countParens = node => {
+  if (node.type === "text") {
+    const text = node.data;
+    return {
+      open: text.split('(').length - 1,
+      close: text.split(')').length - 1
+    };
+  } else if (node.type === "tag") {
+    return sumArrayOfObjs(
+      node.children.map(countParens)
+    );
+  }
+};
+
+const isLink = (node, $link) => {
+  // compares a given node to the $link
+  return node.type === "tag" &&
+      node.name === 'a' &&
+      node.attribs.href === $link.attr('href') &&
+      node.children && node.children[0].data === $link.text();
+};
+
 const isInParens = ($link) => {
 
   const linkText = $link.text();
   const $parent = $link.parent('p');
-  const textContent = $parent.text();
-  console.log('checking whether ', linkText, ' is in parens');
 
-  let openParens = 0;
-  let closeParens = 0;
-  for (let i = 0; i < textContent.indexOf(linkText); i++) {
-    if (textContent.substring(i, i + 1) === '(') {
-      openParens++;
-    } else if (textContent.substring(i, i + 1) === ')') {
-      closeParens++;
-    }
+  const contents = $parent.contents();
+
+  const textContent = $parent.text();
+
+  let i = 0;
+  const parenCounts = [];
+  while (!isLink(contents[i], $link)) {
+    parenCounts.push(
+      countParens(contents[i])
+    );
+    i++;
   }
 
-  // console.log('found the first link text at ', textContent.indexOf(linkText));
-  return openParens !== closeParens;
+  // totals = sum paren count of all nodes before the $link
+  const totals = sumArrayOfObjs(parenCounts);
+  return totals.open !== totals.close;
 
 };
 export default isInParens;

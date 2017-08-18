@@ -74,6 +74,7 @@ export default {
         actions.apiResponse({ page, data });
       })
       .catch(e => {
+        console.error(e);
         actions.addHop({
           title: page,
           firstLink: {}

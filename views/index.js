@@ -6,7 +6,7 @@ export default [
     // local
     ['/', Home],
     ['/home', Home],
-    ['/query', Query],
+    ['/query/:query', Query],
     // github pages
     ['/wiki-hops/', Home],
     ['/wiki-hops/home', Home],

@@ -57,6 +57,6 @@ export default {
   beginQuery(state, actions) {
     console.log('begin hop attempt');
     const uriEncodedPage = encodeURIComponent(state.foundQueryPage.title)
-    actions.goToRoute(`query/?${uriEncodedPage}`);
+    actions.goToRoute(`query/${uriEncodedPage}`);
   }
 };

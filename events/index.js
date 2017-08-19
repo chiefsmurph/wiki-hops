@@ -4,10 +4,10 @@ export default {
   },
   route: (state, actions, data) => {
     console.log(data);
-    const foundPage = decodeURI(location.href.split('?').pop())
-    const isRoute = route => data.match.indexOf(route) !== -1 && foundPage;
+    const isRoute = route => data.match.indexOf(route) !== -1 && data.params.query;
     if (isRoute('query')) {
-      actions.beginHop(foundPage);
+      console.log(data.params.query, 'total');
+      actions.beginHop(data.params.query);
     }
   }
 };

@@ -1,5 +1,7 @@
-import { h, app, Router } from 'hyperapp';
+import { h, app } from 'hyperapp';
+import { Router } from './lib/hyperapp-router/router';
 
+console.log(Router, 'router');
 import './stylesheets/main.scss';
 
 import state from './state';
